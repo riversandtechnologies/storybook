@@ -14,6 +14,7 @@ interface Tag {
   description: string;
   attributes?: TagItem[];
   properties?: TagItem[];
+  methods?: TagItem[];
   events?: TagItem[];
   slots?: TagItem[];
   cssProperties?: TagItem[];
@@ -26,6 +27,7 @@ interface CustomElements {
 interface Sections {
   attributes?: any;
   properties?: any;
+  methods?: any;
   events?: any;
   slots?: any;
   css?: any;
@@ -59,6 +61,11 @@ export const extractPropsFromElements = (tagName: string, customElements: Custom
   if (metaData.properties) {
     sections.properties = mapData(metaData.properties);
   }
+
+  if (metaData.methods) {
+    sections.methods = mapData(metaData.methods);
+  }
+
   if (metaData.events) {
     sections.events = mapData(metaData.events);
   }
